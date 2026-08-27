@@ -127,7 +127,7 @@ void Writer::write(std::string_view key, std::string_view value, std::string_vie
 	if (key.empty()) { return; }
 
 	if (!text.empty()) { text.push_back('\n'); }
-	if (!comment.empty()) { std::format_to(std::back_inserter(text), "# {}\n", comment); }
+	if (!comment.empty()) { std::format_to(std::back_inserter(text), "## {}\n", comment); }
 	if (as == WriteAs::Commented) { text.append("# "); }
 	std::format_to(std::back_inserter(text), "{}={}\n", key, value);
 }

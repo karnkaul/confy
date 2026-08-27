@@ -24,10 +24,10 @@ TEST_CASE(writer_with_comments) {
 	auto writer = dconf::Writer{};
 	writer.write_uncommented("FOO", "bar", "Variable FOO (STRING)");
 	writer.write_commented("KEY", 42, "Variable KEY (INT)");
-	EXPECT(writer.text == R"(# Variable FOO (STRING)
+	EXPECT(writer.text == R"(## Variable FOO (STRING)
 FOO=bar
 
-# Variable KEY (INT)
+## Variable KEY (INT)
 # KEY=42
 )");
 }
