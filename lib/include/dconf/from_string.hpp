@@ -37,7 +37,9 @@ template <std::floating_point Type>
 	return detail::to_number(str, out, 0);
 }
 
-[[nodiscard]] inline auto from_string(std::string_view const str, std::string& out) -> bool {
+template <typename Type>
+	requires(std::assignable_from<Type&, std::string_view>)
+auto from_string(std::string_view const str, Type& out) -> bool {
 	out = str;
 	return true;
 }
