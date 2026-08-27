@@ -3,22 +3,22 @@
 
 namespace {
 TEST_CASE(scanner_empty) {
-	auto scanner = dconf::detail::Scanner{};
-	auto key_value = dconf::detail::KeyValue{};
+	auto scanner = confy::detail::Scanner{};
+	auto key_value = confy::detail::KeyValue{};
 	EXPECT(!scanner.scan_line(key_value, {}));
 	EXPECT(key_value.key.empty() && key_value.value.get().empty());
 }
 
 TEST_CASE(scanner_comment) {
-	auto scanner = dconf::detail::Scanner{};
-	auto key_value = dconf::detail::KeyValue{};
+	auto scanner = confy::detail::Scanner{};
+	auto key_value = confy::detail::KeyValue{};
 	EXPECT(!scanner.scan_line(key_value, "# this is a comment"));
 	EXPECT(key_value.key.empty() && key_value.value.get().empty());
 }
 
 TEST_CASE(scanner_key_only) {
-	auto scanner = dconf::detail::Scanner{};
-	auto key_value = dconf::detail::KeyValue{};
+	auto scanner = confy::detail::Scanner{};
+	auto key_value = confy::detail::KeyValue{};
 	EXPECT(scanner.scan_line(key_value, "KEY="));
 	EXPECT(key_value.key == "KEY");
 	EXPECT(key_value.value.get().empty());
@@ -29,8 +29,8 @@ TEST_CASE(scanner_key_only) {
 }
 
 TEST_CASE(scanner_key_value) {
-	auto scanner = dconf::detail::Scanner{};
-	auto key_value = dconf::detail::KeyValue{};
+	auto scanner = confy::detail::Scanner{};
+	auto key_value = confy::detail::KeyValue{};
 	EXPECT(scanner.scan_line(key_value, "KEY=value"));
 	EXPECT(key_value.key == "KEY");
 	EXPECT(key_value.value.get() == "value");

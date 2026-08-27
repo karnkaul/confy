@@ -4,7 +4,7 @@
 #include <iosfwd>
 #include <string>
 
-namespace dconf {
+namespace confy {
 enum class WriteAs : std::int8_t { Commented, Uncommented };
 
 class Writer {
@@ -36,4 +36,4 @@ class Writer {
 
 	std::string text{};
 };
-} // namespace dconf
+} // namespace confy

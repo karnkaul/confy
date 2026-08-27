@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 
-namespace dconf {
+namespace confy {
 /// \brief Heterogeneous string hasher.
 struct StringHash : std::hash<std::string_view> {
 	using is_transparent = void;
@@ -11,4 +11,4 @@ struct StringHash : std::hash<std::string_view> {
 /// \brief Heterogeneous string map.
 template <typename Value>
 using StringTable = std::unordered_map<std::string, Value, StringHash, std::equal_to<>>;
-} // namespace dconf
+} // namespace confy
