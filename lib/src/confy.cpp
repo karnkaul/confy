@@ -1,6 +1,6 @@
-#include "dconf/from_string.hpp"
-#include "dconf/reader.hpp"
-#include "dconf/writer.hpp"
+#include "confy/from_string.hpp"
+#include "confy/reader.hpp"
+#include "confy/writer.hpp"
 #include "detail/scanner.hpp"
 #include <algorithm>
 #include <array>
@@ -9,7 +9,7 @@
 #include <ostream>
 #include <print>
 
-auto dconf::from_string(std::string_view const str, bool& out) -> bool {
+auto confy::from_string(std::string_view const str, bool& out) -> bool {
 	struct Match {
 		std::string_view phrase{};
 		bool value{};
@@ -37,13 +37,13 @@ auto dconf::from_string(std::string_view const str, bool& out) -> bool {
 	return false;
 }
 
-auto dconf::from_string(std::string_view str, Lowercase& out) -> bool {
+auto confy::from_string(std::string_view str, Lowercase& out) -> bool {
 	out.text.reserve(out.text.size() + str.size());
 	for (char const c : str) { out.text.push_back(char(std::tolower(static_cast<unsigned char>(c)))); }
 	return true;
 }
 
-namespace dconf::detail {
+namespace confy::detail {
 namespace {
 [[nodiscard]] constexpr auto is_space(char const c) { return c == ' ' || c == '\t'; }
 
@@ -92,9 +92,9 @@ auto Scanner::scan_value() -> Value {
 	}
 	return ret;
 }
-} // namespace dconf::detail
+} // namespace confy::detail
 
-namespace dconf {
+namespace confy {
 auto Reader::read_line(std::string_view const line) -> bool {
 	auto key_value = detail::KeyValue{};
 	if (!detail::Scanner{}.scan_line(key_value, line)) { return false; }
@@ -120,9 +120,9 @@ auto Reader::find_value(std::string_view key) const -> Value const* {
 	if (it == m_table.end()) { return nullptr; }
 	return &it->second;
 }
-} // namespace dconf
+} // namespace confy
 
-namespace dconf {
+namespace confy {
 void Writer::write(std::string_view key, std::string_view value, std::string_view comment, WriteAs as) {
 	if (key.empty()) { return; }
 
@@ -144,4 +144,4 @@ auto Writer::save_as(char const* path) const -> bool {
 	print_to(file);
 	return true;
 }
-} // namespace dconf
+} // namespace confy

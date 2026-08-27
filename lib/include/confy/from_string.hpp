@@ -3,7 +3,7 @@
 #include <concepts>
 #include <string>
 
-namespace dconf {
+namespace confy {
 namespace detail {
 template <typename Type>
 [[nodiscard]] auto to_number(std::string_view const str, Type& out, [[maybe_unused]] int const base) -> bool {
@@ -43,4 +43,4 @@ auto from_string(std::string_view const str, Type& out) -> bool {
 	out = str;
 	return true;
 }
-} // namespace dconf
+} // namespace confy

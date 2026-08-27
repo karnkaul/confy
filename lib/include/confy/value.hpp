@@ -1,7 +1,7 @@
 #pragma once
-#include "dconf/from_string.hpp"
+#include "confy/from_string.hpp"
 
-namespace dconf {
+namespace confy {
 class Value {
   public:
 	explicit(false) Value(std::string value = {}) : m_value(std::move(value)) {}
@@ -23,4 +23,4 @@ class Value {
   private:
 	std::string m_value{};
 };
-} // namespace dconf
+} // namespace confy

@@ -1,7 +1,7 @@
 #pragma once
-#include "dconf/value.hpp"
+#include "confy/value.hpp"
 
-namespace dconf::detail {
+namespace confy::detail {
 struct KeyValue {
 	std::string key{};
 	Value value{};
@@ -17,4 +17,4 @@ class Scanner {
 
 	std::string_view m_remain{};
 };
-} // namespace dconf::detail
+} // namespace confy::detail

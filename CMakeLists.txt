@@ -5,10 +5,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_DEBUG_POSTFIX "-d")
 
-set(package_name dconf)
+set(package_name confy)
 project(${package_name} VERSION 0.1.1)
 
-option(DCONF_BUILD_TESTS "Build dconf tests" ${PROJECT_IS_TOP_LEVEL})
+option(DCONF_BUILD_TESTS "Build confy tests" ${PROJECT_IS_TOP_LEVEL})
 
 add_subdirectory(lib)
 

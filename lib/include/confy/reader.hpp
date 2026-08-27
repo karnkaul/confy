@@ -1,9 +1,9 @@
 #pragma once
-#include "dconf/string_table.hpp"
-#include "dconf/value.hpp"
+#include "confy/string_table.hpp"
+#include "confy/value.hpp"
 #include <iosfwd>
 
-namespace dconf {
+namespace confy {
 class Reader {
   public:
 	/// \returns true if a valid key was extracted.
@@ -31,4 +31,4 @@ class Reader {
   private:
 	StringTable<Value> m_table{};
 };
-} // namespace dconf
+} // namespace confy

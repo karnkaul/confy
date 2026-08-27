@@ -1,6 +1,6 @@
 #pragma once
 #include <string_view>
 
-namespace dconf {
+namespace confy {
 inline constexpr auto build_version_v = std::string_view{"@PROJECT_VERSION@"};
-} // namespace dconf
+} // namespace confy
